@@ -1,0 +1,6 @@
+data/
+posts/figures/
+__pycache__/
+*.pyc
+.env
+.DS_Store
