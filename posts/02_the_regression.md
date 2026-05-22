@@ -12,12 +12,12 @@ Post 1 described the mechanism: gas-fired plants set the clearing price in PJM, 
 
 The panel covers 238 weeks: September 2020 through June 2025. Two public sources, no cost:
 
-- **Henry Hub spot price** — FRED series DHHNGSP, daily averages aggregated to weekly. Free API key from the St. Louis Fed.
-- **PJM Dominion Zone day-ahead LMPs** — EIA annual CSV files, hourly observations aggregated to daily then weekly. No account required.
+- **Henry Hub spot price** — [FRED series DHHNGSP](https://fred.stlouisfed.org/series/DHHNGSP), daily averages aggregated to weekly. Free API key from the St. Louis Fed.
+- **PJM Dominion Zone day-ahead LMPs** — [EIA annual CSV files](https://www.eia.gov/electricity/wholesalemarkets/), hourly observations aggregated to daily then weekly. No account required.
 
 The LMP series includes the congestion component separately, which becomes relevant in M2 below. Gas prices are in $/MMBtu; electricity in $/MWh.
 
-The panel splits 119 weeks pre-2023 and 119 post. ChatGPT launched November 2022; hyperscaler data center capex inflected sharply through 2023. The January 2023 breakpoint is a reasonable place to test for a structural change.
+The panel splits 119 weeks pre-2023 and 119 post. ChatGPT launched November 30, 2022 (OpenAI); hyperscaler data center capex inflected sharply through 2023. The January 2023 breakpoint is a reasonable place to test for a structural change.
 
 ---
 
@@ -93,7 +93,19 @@ HAC standard errors (Newey-West, 4 lags). \* p<.10 \*\* p<.05 \*\*\* p<.01
 
 Post 3 moves from price transmission to the regulatory constraint that prevents supply from closing the gap. FERC's certificate policy governs new interstate gas pipeline capacity. The 2022 policy revision made approvals more contested. The Northeast Supply Enhancement has been caught in that process for years while Northern Virginia's load keeps climbing.
 
-Data and code are on GitHub.
+Data and code are on [GitHub](https://github.com/aleccshields/marginal-fuel).
+
+---
+
+## Sources
+
+**Data**
+- Henry Hub daily spot price: [FRED series DHHNGSP](https://fred.stlouisfed.org/series/DHHNGSP), Federal Reserve Bank of St. Louis
+- PJM Dominion Zone day-ahead LMPs and congestion component: [EIA Wholesale Electricity Markets](https://www.eia.gov/electricity/wholesalemarkets/), annual zone CSV files
+- Analysis code, panel construction, and full regression output: [github.com/aleccshields/marginal-fuel](https://github.com/aleccshields/marginal-fuel)
+
+**Methodology**
+HAC standard errors follow Newey and West (1987), "A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelation Consistent Covariance Matrix," *Econometrica* 55(3): 703–708. Implemented via `statsmodels` in Python.
 
 ---
 
