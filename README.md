@@ -2,24 +2,71 @@
 
 Energy markets, regulation, and the economics of the grid.
 
-A Substack-first research project analyzing how natural gas pipeline constraints transmit into electricity prices in data-center-heavy markets. Written as a three-post series; code and data pipeline are fully reproducible from free public sources.
+A Substack research project in two series. Code and data pipelines are fully reproducible from free public sources.
 
-## Structure
+## Series 1: Gas to Power (Posts 1–3)
+
+How natural gas pipeline constraints transmit into electricity prices in data-center-heavy markets.
+
+**Posts**
+1. **AI Runs on Gas** — the data center energy stack, Transco constraints, and the basis spread
+2. **The Basis Spread That Moves Electricity Prices** — price transmission regression and structural break test
+3. **Why FERC Certificate Policy Is Now a Data Center Issue** — regulatory constraint analysis
+
+**Regression results (238 weeks, Sept 2020 – June 2025)**
+
+| Model | Specification | Key coefficient | R² |
+|-------|--------------|-----------------|-----|
+| M1 | d(LMP) ~ d(HH) + seasonal | **5.61*** $/MWh per $/MMBtu | 0.28 |
+| M2 | d(Congestion) ~ d(HH) + seasonal | 0.15 (n.s.) | 0.01 |
+| M3 | d(LMP) ~ d(HH) × post-AI + seasonal | pre: 6.18\*\*\*, interaction: -4.04 (n.s.) | 0.28 |
+| M4 | log(LMP) ~ log(HH) + trend + seasonal | elasticity: **0.89\*\*\***, trend: **+9.7%/yr\*\*\*** | 0.73 |
+
+HAC standard errors (Newey-West, 4 lags). \* p<.10 \*\* p<.05 \*\*\* p<.01
+
+The AI-era demand shock shows up as a level shift in LMPs (the year trend in M4), not as stronger gas price pass-through.
+
+---
+
+## Series 2: Zero Margin (Posts 4–7)
+
+Whether the electricity market adequately compensates nuclear for reliability, carbon-free generation, and grid inertia. More methodologically advanced than Series 1 (difference-in-differences vs. OLS).
+
+**Posts**
+4. **The Cost of Free Fuel** — nuclear earns the gas-set LMP despite near-zero fuel cost; shale-era retirement wave; three attributes the energy price misses
+5. **What States Were Willing to Pay** — Illinois, New Jersey, and New York ZEC programs as natural experiments; D-in-D design; implied carbon prices ($45/ton IL, $27/ton NJ) vs. RGGI ($3–5/ton)
+6. **The Price of Scarcity** — 2025/26 PJM capacity auction spike ($269.92/MW-day RTO, $444.26/MW-day Dominion Zone); VRR curve mechanics; three demand-side drivers; $12.22/MWh revenue conversion
+7. **The Shadow Price of Firm Power** — Microsoft/Crane Clean Energy Center PPA; Amazon/Susquehanna co-location and FERC rejection; Google/Kairos SMR deal; $50–54/MWh restart cost floor derivation; four-mechanism synthesis; market design conclusion
+
+---
+
+## Repository structure
 
 ```
 analysis/
   01_fetch_data.py         — download Henry Hub (FRED) and PJM Dominion Zone LMPs (EIA)
   02_build_panel.py        — merge into weekly panel, compute first differences and logs
   03_regression_charts.py  — four regression models + four publication charts
+  04_nuclear_fig1.py       — Figure 1: Henry Hub annual avg + nuclear retirements (FRED API)
+  05_zec_fig2.py           — Figure 2: ZEC nuclear revenue stack vs. operating cost
+  06_pjm_fig3.py           — Figure 3: PJM BRA clearing prices by delivery year
+  06_pjm_fig4.py           — Figure 4: capacity revenue conversion curve
+  07_shadow_fig5.py        — Figure 5: revenue stack evolution 2016/2024/2025 (no API required)
 
 posts/
-  01_ai_runs_on_gas.md     — Post 1: explainer (the stack, Transco, the basis spread)
+  01_ai_runs_on_gas.md
+  02_the_regression.md
+  03_certificate_policy.md
+  04_the_cost_of_free_fuel.md
+  05_what_states_were_willing_to_pay.md
+  06_the_price_of_scarcity.md
+  07_the_shadow_price.md
   figures/                 — generated charts (gitignored)
 
 data/                      — downloaded CSVs (gitignored)
 ```
 
-## Data sources (all free, no cost)
+## Data sources
 
 | Source | Data | Access |
 |--------|------|--------|
@@ -32,15 +79,14 @@ data/                      — downloaded CSVs (gitignored)
 pip install pandas numpy matplotlib statsmodels requests openpyxl
 ```
 
-Get a free FRED API key at https://fred.stlouisfed.org/docs/api/api_key.html then set it as an environment variable:
+Set API keys as environment variables (never hardcode):
 
 ```bash
 export FRED_API_KEY=your_key_here
-# optional, for Transco Zone 6 basis spread data:
-export EIA_API_KEY=your_key_here
+export EIA_API_KEY=your_key_here   # optional, for Transco Zone 6 basis spread data
 ```
 
-Then run the pipeline in order:
+Run Series 1 pipeline in order:
 
 ```bash
 python analysis/01_fetch_data.py
@@ -48,23 +94,14 @@ python analysis/02_build_panel.py
 python analysis/03_regression_charts.py
 ```
 
-Charts are saved to `posts/figures/`. The regression table prints to stdout.
+Series 2 figures run independently:
 
-## Regression results (238 weeks, Sept 2020 – June 2025)
+```bash
+python analysis/04_nuclear_fig1.py   # requires FRED_API_KEY
+python analysis/05_zec_fig2.py
+python analysis/06_pjm_fig3.py
+python analysis/06_pjm_fig4.py
+python analysis/07_shadow_fig5.py    # no API key required
+```
 
-| Model | Specification | Key coefficient | R² |
-|-------|--------------|-----------------|-----|
-| M1 | d(LMP) ~ d(HH) + seasonal | **5.61*** $/MWh per $/MMBtu | 0.28 |
-| M2 | d(Congestion) ~ d(HH) + seasonal | 0.15 (n.s.) | 0.01 |
-| M3 | d(LMP) ~ d(HH) × post-AI + seasonal | pre: 6.18***, interaction: -4.04 (n.s.) | 0.28 |
-| M4 | log(LMP) ~ log(HH) + trend + seasonal | elasticity: **0.89***, trend: **+9.7%/yr*** | 0.73 |
-
-HAC standard errors (Newey-West, 4 lags). \* p<.10 \*\* p<.05 \*\*\* p<.01
-
-The AI-era demand shock shows up as a level shift in LMPs (the year trend in M4), not as stronger gas price pass-through. That distinction matters for both investment and regulatory analysis.
-
-## Series outline
-
-1. **AI Runs on Gas** — the data center energy stack, Transco constraints, and the basis spread
-2. **The Basis Spread That Moves Electricity Prices** — price transmission regression and structural break test
-3. **Why FERC Certificate Policy Is Now a Data Center Issue** — regulatory constraint analysis
+Charts save to `posts/figures/`.
