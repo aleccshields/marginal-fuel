@@ -24,7 +24,7 @@ A $1 increase in the Henry Hub gas price pushes the wholesale electricity price 
 
 ## The Transco problem
 
-Williams Companies owns the Transco system, the main gas pipeline serving the mid-Atlantic. Construction began in 1949; the first gas delivery reached Virginia in December 1950. The original mainline ran roughly 1,800 miles from South Texas to New York City. Since then Transco has grown to approximately 10,000 miles of total pipeline, but the mid-Atlantic corridor remains the critical artery for regional supply.
+[Williams Companies](https://www.williams.com/pipeline/transco/) owns the Transco system, the main gas pipeline serving the mid-Atlantic. Construction began in 1949; the first gas delivery reached Virginia in December 1950. The original mainline ran roughly 1,800 miles from South Texas to New York City. Since then Transco has grown to approximately 10,000 miles of total pipeline, but the mid-Atlantic corridor remains the critical artery for regional supply.
 
 On a cold January morning, or as data center load climbs through the year, Transco hits capacity. Gas cannot flow fast enough from Appalachian and Gulf supply basins to the plants that need it.
 
@@ -48,7 +48,7 @@ Gas and power prices move together across the full period. The regression result
 
 Williams is trying to expand. The Southeast Supply Enhancement would add 1.6 billion cubic feet per day along existing rights of way. The Northeast Supply Enhancement has spent years in regulatory limbo after New York and New Jersey denied water quality certification.
 
-New interstate gas pipeline capacity requires a certificate of public convenience and necessity from FERC. The process takes years. FERC revised its certificate policy in 2022 to weigh climate impacts more heavily, making approvals more contested than they were a decade ago.
+New interstate gas pipeline capacity requires a [certificate of public convenience and necessity](https://www.law.cornell.edu/uscode/text/15/717f) from FERC. The process takes years. FERC revised its certificate policy in 2022 to weigh climate impacts more heavily, making approvals more contested than they were a decade ago.
 
 The friction reflects legitimate concerns about locking in long-lived fossil fuel infrastructure. The financial consequence is that supply cannot respond to demand through new capacity, so the full demand signal goes into price. Electricity consumers in Northern Virginia pay more, for longer, than they would if pipeline capacity were elastic.
 
@@ -60,7 +60,27 @@ The energy transition debate has concentrated on generation: which plants to bui
 
 The next post presents the regression: a weekly panel using public FRED and EIA data with HAC-robust standard errors. The third post covers FERC certificate policy and pipeline rate regulation as constraints on AI infrastructure investment.
 
-Data and code are on GitHub.
+Data and code are on [GitHub](https://github.com/aleccshields/marginal-fuel).
+
+---
+
+## Sources
+
+**Data center market statistics**
+Northern Virginia market share and Loudoun County capacity figures: CBRE, *North America Data Center Trends H1 2024*; JLL, *Data Center Outlook 2024*. Dominion Energy contracted load growth: Dominion Energy investor presentations and earnings releases, 2024 (available at investor.dominionenergy.com).
+
+**Pipeline and generation data**
+- Transco system: [Williams Companies](https://www.williams.com/pipeline/transco/)
+- PJM generation mix: [EIA Electricity Data Browser](https://www.eia.gov/electricity/data/browser/)
+- Henry Hub spot price: [FRED series DHHNGSP](https://fred.stlouisfed.org/series/DHHNGSP), Federal Reserve Bank of St. Louis
+- PJM Dominion Zone day-ahead LMPs: [EIA Wholesale Electricity Markets](https://www.eia.gov/electricity/wholesalemarkets/)
+
+**Regulatory**
+- Natural Gas Act § 7(c): [15 U.S.C. § 717f](https://www.law.cornell.edu/uscode/text/15/717f), Cornell Legal Information Institute
+- FERC certificate policy revision: Docket PL18-1-000 (available at ferc.gov)
+
+**Analysis**
+- [github.com/aleccshields/marginal-fuel](https://github.com/aleccshields/marginal-fuel)
 
 ---
 
