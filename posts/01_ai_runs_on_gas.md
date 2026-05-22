@@ -40,7 +40,7 @@ The chart below plots weekly electricity prices in PJM's Dominion Zone alongside
 
 *[Figure 1: Dominion Zone LMP vs. Henry Hub — weekly, Sept 2020–June 2025]*
 
-Gas and power prices move together across the full period. The regression results in the next post put a number on it: a near-unit elasticity between Henry Hub and Dominion Zone LMPs. The more striking finding is what remains after controlling for gas prices. Dominion Zone LMPs have been rising at roughly 10% per year in real terms beyond what gas prices predict. Data center load tightens capacity and pushes prices up through that channel, not just through fuel costs. The distinction matters for investment decisions and regulatory policy alike.
+Gas and power prices move together across the full period. The regression results in the next post put a number on it: a near-unit elasticity between Henry Hub and Dominion Zone LMPs. The more striking finding is what remains after controlling for gas prices. Dominion Zone LMPs have been rising at roughly 10% per year in nominal terms beyond what gas prices alone predict. Something besides fuel cost is pushing the price level up. The regression can't isolate data center load from other contributors — coal retirements, transmission constraints, broader demand growth — but in a market where data centers added 7,000 megawatts of contracted load in a single year, the timing is not coincidental.
 
 ---
 
