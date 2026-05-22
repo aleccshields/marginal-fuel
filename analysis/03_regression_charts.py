@@ -138,8 +138,8 @@ def chart_timeseries(panel: pd.DataFrame):
     fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(11, 7), sharex=True)
 
     ax1b = ax1.twinx()
-    ax1.plot(panel["week"],  panel["dom_lmp"],    color=C["power"], lw=1.4, label="Dominion LMP ($/MWh)")
-    ax1b.plot(panel["week"], panel["henry_hub"],  color=C["gas"],   lw=1.4, ls="--", label="Henry Hub ($/MMBtu)")
+    ax1.plot(panel["week"],  panel["dom_lmp"],   color=C["power"], lw=1.4, label="Dominion LMP ($/MWh)")
+    ax1b.plot(panel["week"], panel["henry_hub"], color=C["gas"],   lw=1.4, ls="--", label="Henry Hub ($/MMBtu)")
     ax1.set_ylabel("Electricity Price ($/MWh)", color=C["power"])
     ax1b.set_ylabel("Gas Price ($/MMBtu)",      color=C["gas"])
     ax1.tick_params(axis="y", colors=C["power"])
@@ -266,6 +266,46 @@ def chart_congestion_heatmap(panel: pd.DataFrame):
     print(f"Saved: {path.name}")
 
 
+def chart_implied_heat_rate(panel: pd.DataFrame):
+    """Implied heat rate over time: LMP / Henry Hub, proxy for marginal generator efficiency.
+    Rising trend signals less efficient (peaker) units setting the price more often."""
+    df = panel.dropna(subset=["implied_heat_rate"]).copy()
+    df = df[df["implied_heat_rate"] > 0]
+
+    # 12-week rolling median to smooth noise
+    df["hr_smooth"] = df["implied_heat_rate"].rolling(12, center=True).median()
+
+    fig, ax = plt.subplots(figsize=(11, 4.5))
+    ax.scatter(df["week"], df["implied_heat_rate"], alpha=0.25, s=14,
+               color=C["power"], label="Weekly implied heat rate")
+    ax.plot(df["week"], df["hr_smooth"], color=C["power"], lw=2,
+            label="12-week rolling median")
+
+    # Reference lines for generator types
+    ax.axhline(7,  color="gray", lw=0.9, ls="--")
+    ax.axhline(10, color="gray", lw=0.9, ls=":")
+    ax.text(df["week"].iloc[2], 7.15,  "CCGT (~7 MMBtu/MWh)",   fontsize=8, color="gray")
+    ax.text(df["week"].iloc[2], 10.15, "Peaker (~10 MMBtu/MWh)", fontsize=8, color="gray")
+
+    ai_start = pd.Timestamp("2023-01-01")
+    ax.axvspan(ai_start, df["week"].max(), alpha=0.07, color=C["post"])
+    ax.axvline(ai_start, color=C["post"], lw=0.9, ls=":")
+    ax.text(ai_start + pd.Timedelta(weeks=2),
+            ax.get_ylim()[1] * 0.93, "AI era", fontsize=8.5, color=C["post"])
+
+    ax.set_ylabel("Implied Heat Rate (MMBtu/MWh)", fontsize=10)
+    ax.set_title("Implied Gas-to-Power Heat Rate: Dominion Zone\n"
+                 "Rising trend signals less efficient generators setting the marginal price", fontsize=11)
+    ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
+    ax.xaxis.set_major_locator(mdates.YearLocator())
+    ax.legend(fontsize=9)
+    fig.tight_layout()
+    path = FIG_DIR / "fig05_implied_heat_rate.png"
+    fig.savefig(path, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved: {path.name}")
+
+
 if __name__ == "__main__":
     panel = load()
     print(f"Panel: {len(panel)} weeks")
@@ -278,6 +318,7 @@ if __name__ == "__main__":
     chart_scatter(panel)
     chart_rolling_beta(panel, clean)
     chart_congestion_heatmap(panel)
+    chart_implied_heat_rate(panel)
 
     print(f"\nAll figures in posts/figures/")
     print("Next: write Post 2 using these results.")
