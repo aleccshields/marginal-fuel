@@ -2,7 +2,7 @@
 
 Energy markets, regulation, and the economics of the grid.
 
-A Substack research project in two series. Code and data pipelines are fully reproducible from free public sources.
+A Substack research project in three series. Code and data pipelines are fully reproducible from free public sources.
 
 ## Series 1: Gas to Power (Posts 1–3)
 
@@ -40,10 +40,30 @@ Whether the electricity market adequately compensates nuclear for reliability, c
 
 ---
 
+## Series 3: The Queue (Posts 8–)
+
+The financial and regulatory mechanics of U.S. generator interconnection — why the queue is broken and what it would take to fix it.
+
+**Posts**
+8. **The Option Nobody Priced** — interconnection queue positions as call options on transmission access; study deposits priced at under 1% of development option value; rational speculative flooding; FERC Order 2023 analysis; three structural reforms (secondary market, value-indexed deposits, congestion auctions)
+
+**Key numbers (LBNL Queued Up, data through 2024)**
+
+| Year | GW in queue | Installed capacity | Ratio |
+|------|------------|-------------------|-------|
+| 2010 | 1,288 GW | 1,039 GW | 1.2x |
+| 2016 | 1,681 GW | 1,087 GW | 1.5x |
+| 2020 | 2,376 GW | 1,125 GW | 2.1x |
+| 2024 | 4,390 GW | 1,260 GW | 3.5x |
+
+Of projects entering queues 2000–2018, 85% withdrew before reaching commercial operation.
+
+---
+
 ## Repository structure
 
 ```
-analysis/
+analysis/                  — Series 1 and 2 scripts
   01_fetch_data.py         — download Henry Hub (FRED) and PJM Dominion Zone LMPs (EIA)
   02_build_panel.py        — merge into weekly panel, compute first differences and logs
   03_regression_charts.py  — four regression models + four publication charts
@@ -53,7 +73,7 @@ analysis/
   06_pjm_fig4.py           — Figure 4: capacity revenue conversion curve
   07_shadow_fig5.py        — Figure 5: revenue stack evolution 2016/2024/2025 (no API required)
 
-posts/
+posts/                     — Series 1 and 2 posts
   01_ai_runs_on_gas.md
   02_the_regression.md
   03_certificate_policy.md
@@ -63,7 +83,16 @@ posts/
   07_the_shadow_price.md
   figures/                 — generated charts (gitignored)
 
-data/                      — downloaded CSVs (gitignored)
+series3/
+  analysis/
+    08_queue_fig1.py       — Figure 1: queue GW vs. installed capacity by year (LBNL)
+    08_queue_fig2.py       — Figure 2: withdrawal rate by entry year (LBNL)
+    08_queue_fig3.py       — Figure 3: deposit vs. option value sensitivity table (no API)
+  posts/
+    08_the_option_nobody_priced.md
+    figures/               — generated charts (gitignored)
+
+data/                      — downloaded files (gitignored)
 ```
 
 ## Data sources
@@ -72,6 +101,7 @@ data/                      — downloaded CSVs (gitignored)
 |--------|------|--------|
 | FRED API | Henry Hub daily spot price (series: DHHNGSP) | Free key at fred.stlouisfed.org |
 | EIA wholesale markets | PJM Dominion Zone day-ahead LMPs + congestion | Annual CSVs, no auth required |
+| LBNL Queued Up | U.S. generator interconnection queue, project-level | Free download at emp.lbl.gov/publications/queued-characteristics-power-plants |
 
 ## Setup
 
@@ -104,4 +134,12 @@ python analysis/06_pjm_fig4.py
 python analysis/07_shadow_fig5.py    # no API key required
 ```
 
-Charts save to `posts/figures/`.
+Series 3 figures run independently (download LBNL data file first — see data sources above):
+
+```bash
+python series3/analysis/08_queue_fig1.py   # requires LBNL data file in data/
+python series3/analysis/08_queue_fig2.py   # requires LBNL data file in data/
+python series3/analysis/08_queue_fig3.py   # no external data required
+```
+
+Series 1 charts save to `posts/figures/`. Series 3 charts save to `series3/posts/figures/`.
