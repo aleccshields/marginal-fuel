@@ -1,5 +1,6 @@
 data/
 posts/figures/
+series3/posts/figures/
 __pycache__/
 *.pyc
 .env
