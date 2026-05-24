@@ -22,7 +22,7 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 from pathlib import Path
 
-DATA_DIR = Path(__file__).parent.parent / "data"
+DATA_DIR = Path(__file__).parent.parent.parent / "data"
 FIG_DIR  = Path(__file__).parent.parent / "posts" / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
