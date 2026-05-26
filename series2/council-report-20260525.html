@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Council Report — Marginal Fuel Series 3 Angle</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #fff;
+    color: #1a1a1a;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  h2 { font-size: 17px; font-weight: 700; margin: 32px 0 10px; border-bottom: 2px solid #e8e8e8; padding-bottom: 6px; }
+  h3 { font-size: 14px; font-weight: 700; margin: 20px 0 6px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+  .meta { font-size: 13px; color: #888; margin-bottom: 32px; }
+  .question-box {
+    background: #f7f8fa;
+    border-left: 4px solid #3b6fd4;
+    padding: 16px 20px;
+    margin-bottom: 36px;
+    font-size: 14px;
+    border-radius: 0 4px 4px 0;
+  }
+  .verdict-section {
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+  .verdict-section.highlight {
+    border-color: #3b6fd4;
+    background: #f5f8ff;
+  }
+  .verdict-section.action {
+    border-color: #2a9d5c;
+    background: #f2fbf5;
+  }
+  .verdict-section p:last-child { margin-bottom: 0; }
+
+  /* Alignment grid */
+  .alignment-grid {
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr 1fr;
+    gap: 2px;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+  .ag-header { font-weight: 700; padding: 8px 10px; background: #f0f0f0; text-align: center; }
+  .ag-label { font-weight: 600; padding: 8px 10px; background: #fafafa; border: 1px solid #e8e8e8; display: flex; align-items: center; }
+  .ag-cell { padding: 8px 10px; border: 1px solid #e8e8e8; text-align: center; display: flex; align-items: center; justify-content: center; }
+  .ag-cell.strong { background: #e8f4ed; color: #1e7a40; font-weight: 700; }
+  .ag-cell.neutral { background: #fff8e8; color: #a05c00; }
+  .ag-cell.weak { background: #fef0f0; color: #c0392b; }
+
+  /* Collapsible advisors */
+  details { border: 1px solid #e2e2e2; border-radius: 5px; margin-bottom: 10px; }
+  summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "▾"; font-size: 16px; color: #888; }
+  details[open] summary::after { content: "▴"; }
+  .advisor-body { padding: 14px 18px 16px; border-top: 1px solid #e8e8e8; font-size: 14px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin-right: 8px;
+  }
+  .tag-contrarian    { background: #fde8e8; color: #c0392b; }
+  .tag-firstprinciples { background: #e8eeff; color: #2c4fa3; }
+  .tag-expansionist  { background: #e8f6e8; color: #1e7a40; }
+  .tag-outsider      { background: #fff4e0; color: #a05c00; }
+  .tag-executor      { background: #f0e8ff; color: #6b3caa; }
+  .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+  .review-item { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 4px; padding: 12px 14px; font-size: 13px; }
+  .review-item strong { display: block; margin-bottom: 4px; color: #555; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid #e8e8e8; font-size: 12px; color: #aaa; }
+</style>
+</head>
+<body>
+
+<h1>Council Report — Series 3 Angle Selection</h1>
+<p class="meta">Marginal Fuel &nbsp;·&nbsp; Counciled 2026-05-25 &nbsp;·&nbsp; 5 advisors + peer review + chairman synthesis</p>
+
+<div class="question-box">
+  <strong>Question:</strong> Which angle is strongest for a 2–3 post transmission series? Three candidates: (1) The Congestion Money — FTR rent persistence quantified from public PJM/MISO auction data; (2) HVDC and the Long Game — SunZia/Grain Belt/TransWest as case studies; (3) Order 1920 Mechanics — FERC's 20-year regional planning rule. Context: prior series used original quant work (LMP regression; queue option-pricing). Audience: policy-literate, not electricity-expert.
+</div>
+
+<h2>Chairman's Verdict</h2>
+
+<div class="verdict-section highlight">
+  <h3>Where the Council Agrees</h3>
+  <p>Angle 1 is the unanimous first choice. It has a number (congestion revenue, quantified at the path level), a mechanism readers haven't seen before (rent persistence via deliberate under-investment), and it completes the three-series arc that Angles 2 and 3 cannot. The Executor won the peer reviews for one reason: it proved executability rather than asserting it — the PJM FTR portal exists, the data goes back years, and a path-pair pivot produces a headline figure in a week.</p>
+  <p>The council also agreed on why Angles 2 and 3 fail. Angle 2 produces infrastructure journalism, not original analysis. Angle 3 is a 1,300-page regulatory text sitting on top of a live legal challenge — the story may be vacated before it publishes.</p>
+</div>
+
+<div class="verdict-section">
+  <h3>Where the Council Clashes</h3>
+  <p>The one real disagreement: is the ownership data gap fatal (the Contrarian) or a feature (everyone else)?</p>
+  <p>The Contrarian argued you cannot credibly promise to show who extracts congestion revenue and then admit you cannot name them. Everyone else argued you never needed to name them — you quantify the mechanism, the absence of disclosure becomes the policy point, and the gap mirrors the approach the prior series took. Neither prior series named specific generators or developers. Angle 1 is no different. The Contrarian is applying a standard the series never set.</p>
+</div>
+
+<div class="verdict-section">
+  <h3>Blind Spots the Council Caught</h3>
+  <p><strong>Pedagogy (caught by all 5 reviewers).</strong> The council debated analytical method and series coherence and ignored whether a policy-literate non-expert can follow FTR mechanics. Series 1 mapped gas prices → LMPs (one concept to learn). Series 2 mapped options → interconnection deposits (one concept). Angle 1 requires understanding both a financial instrument (FTR) and the physical constraint it references (transmission congestion) simultaneously. That pedagogical lift is heavier than either prior series, and it needs to be designed for explicitly — probably 400–600 words of setup before any number appears.</p>
+  <p><strong>Post count feasibility (caught by Reviewer 4).</strong> A single congestion-rent pivot is one post, not a series. The council never tested whether Angle 1 generates enough structural depth for 6–9 original figures across 2–3 posts. That question should be answered before any writing begins.</p>
+</div>
+
+<div class="verdict-section highlight">
+  <h3>The Recommendation</h3>
+  <p><strong>Angle 1. Not close.</strong> But it requires three distinct analytical threads:</p>
+  <p><strong>Post 1 — The congestion revenue pool.</strong> Quantify path-level FTR rents across PJM and MISO over 3–5 years. Which paths clear positive prices year after year? What is the aggregate rent pool? This is the number. This is the headline.</p>
+  <p><strong>Post 2 — The investment gap.</strong> Take the congested paths from Post 1 and show where new transmission has and has not been built. Revealed preference: lines are not being built where congestion rents are highest. FERC constraint data and historical build records are public. This post connects rents to the physical under-investment that sustains them.</p>
+  <p><strong>Post 3 — The closing arc figure.</strong> The one chart that connects all three series. Series 1: price signals transmit imperfectly. Series 2: new supply cannot enter cleanly. Series 3: the infrastructure that would fix both is blocked by the same incumbent incentive structure. That figure, if executed well, gets screenshot-shared.</p>
+  <p><em>On the Contrarian's objection:</em> do not drop Angle 1. Be explicit in the framing — public auctions, private ownership, no disclosure. That is not a gap in the analysis. It is the finding.</p>
+</div>
+
+<div class="verdict-section action">
+  <h3>The One Thing to Do First</h3>
+  <p>Go to the PJM Markets &amp; Operations portal, pull FTR auction clearing results for the last five years, and build a pivot table: path-pair by year, average cleared FTR price, total MWh. Sort descending by aggregate implied revenue. The paths at the top — clearing positive prices year after year — are the persistent congestion rents. That table is Post 1's backbone and the factual test of whether the series is viable. Run that pivot before writing a single word.</p>
+</div>
+
+<h2>Advisor Alignment</h2>
+
+<div class="alignment-grid">
+  <div class="ag-header" style="background:#fff"></div>
+  <div class="ag-header">Angle 1<br><small>Congestion Money</small></div>
+  <div class="ag-header">Angle 2<br><small>HVDC</small></div>
+  <div class="ag-header">Angle 3<br><small>Order 1920</small></div>
+
+  <div class="ag-label">Contrarian</div>
+  <div class="ag-cell neutral">Concern (data gap)</div>
+  <div class="ag-cell weak">No method</div>
+  <div class="ag-cell weak">Unsolvable + vacatable</div>
+
+  <div class="ag-label">First Principles</div>
+  <div class="ag-cell strong">Cause, not symptom</div>
+  <div class="ag-cell weak">Consequence</div>
+  <div class="ag-cell weak">Consequence</div>
+
+  <div class="ag-label">Expansionist</div>
+  <div class="ag-cell strong">Franchise potential</div>
+  <div class="ag-cell weak">Good journalism only</div>
+  <div class="ag-cell weak">Good journalism only</div>
+
+  <div class="ag-label">Outsider</div>
+  <div class="ag-cell strong">Has the number</div>
+  <div class="ag-cell weak">Others' numbers</div>
+  <div class="ag-cell weak">No number</div>
+
+  <div class="ag-label">Executor</div>
+  <div class="ag-cell strong">Clear first step</div>
+  <div class="ag-cell weak">No original analysis</div>
+  <div class="ag-cell weak">Law review, not quant</div>
+</div>
+
+<h2>Advisor Responses</h2>
+
+<details>
+  <summary><span class="tag tag-contrarian">Contrarian</span> Finds the holes in all three</summary>
+  <div class="advisor-body">
+    <p>Angle 1 has a structural hole that will embarrass you publicly: you're promising to show "who collects congestion revenue" and then admitting you can't. That's not an analytical gap you can paper over with caveats — it's the entire thesis. Readers who followed your prior series got LMP regressions and barrier option math. Here you're offering a heat map of congested paths and saying "someone profits from this, but we don't know who." That's a downgrade, not a continuation.</p>
+    <p>Angle 2 is competent infrastructure journalism. It is not quantitative social science. There's no original analytical framework here — it's a project tracker with a physics explainer attached. SunZia got covered by every energy outlet in 2023. Your differentiation is your method, not your topic selection, and HVDC narrative gives you no method.</p>
+    <p>Angle 3 is where the actual analytical work is, but you're understating the problem: Order 1920's beneficiary-pays allocation is genuinely unsolved. The legal challenges also mean the rule may not survive — you could publish a rigorous analysis of a vacated order.</p>
+    <p>The deeper problem: none of these has the clean data-to-insight pipeline that made Series 1 and 2 work. Until you can state the data-to-insight pipeline in one sentence, you don't have a series.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span class="tag tag-firstprinciples">First Principles</span> What is the series actually about?</summary>
+  <div class="advisor-body">
+    <p>The question you're asking is "which angle is best." The question you should be asking is "what is this series actually about?"</p>
+    <p>Series 1: price transmission. Series 2: entry incentives and option mispricing. The through-line: markets fail when the rules create perverse incentives that participants rationally exploit. Transmission is the physical constraint that makes every other dysfunction possible. Congestion isn't an accident — it's a feature for the people collecting FTR revenue.</p>
+    <p>Angles 2 and 3 are consequences. Angle 1 is cause.</p>
+    <p>For Angle 1: you don't need firm names. You need to show that congestion rents are persistent, concentrated on predictable paths, and structurally resistant to the new line investment that would eliminate them. FTR data gives you the revenue pool. FERC constraint data gives you the paths. Historical build rates give you the revealed preference: lines aren't getting built where rents are highest.</p>
+    <p>The series arc then becomes unavoidable: Series 1 showed price signals transmit imperfectly. Series 2 showed new supply can't enter cleanly. Series 3 shows the infrastructure that would fix both is blocked — partly by physics, mostly by incentives. That's a complete theory of why U.S. electricity markets underperform. Angle 1 isn't the best angle. It's the only angle that completes the argument.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span class="tag tag-expansionist">Expansionist</span> This is a franchise, not just a series</summary>
+  <div class="advisor-body">
+    <p>Angle 1 is the breakout piece. The three-series arc you're building is a unified theory of why the U.S. grid can't decarbonize at speed — and Angle 1 closes it perfectly. That's not three posts about transmission. That's a coherent book proposal.</p>
+    <p>The hidden upside: FTR congestion revenue is the missing link between transmission economics and regulatory capture — and almost no policy-literate writing has quantified it at the path level. If you map which paths are persistently congested and back out the aggregate rent pool, you produce a number — "the congestion tax on renewables" — that journalists, advocates, and FERC staff will cite. That number is a distribution mechanism for your readership.</p>
+    <p>The analytical surface is richer than Angles 2 or 3. Time-series of path-level congestion rents, correlation with delayed interconnection queues from Series 2, implied counterfactual of what transmission investment would have eliminated this rent. A single chart connecting all three series is the kind of thing that gets screenshot-shared.</p>
+    <p>Angles 2 and 3 are good journalism. Angle 1 is a franchise.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span class="tag tag-outsider">Outsider</span> What's the number?</summary>
+  <div class="advisor-body">
+    <p>Series 1 had a number: 238 weeks, a regression, a coefficient. Series 2 had a number: option value, strike price, a percentage. A reader could picture it. What's the number in Series 3?</p>
+    <p>Angle 1 has a number. Congestion revenue pool — quantified. Persistently congested paths — mapped. The "we can show the money but not the face" framing is actually more compelling than naming names. It creates productive tension.</p>
+    <p>Angle 2 has no number that belongs to this series. SunZia's 3 GW is someone else's number. Angle 3 has no number at all for a general reader — "beneficiary-pays cost allocation" causes eyes to glaze before the second paragraph.</p>
+    <p>Series 1 and 2 both had a mechanism the reader hadn't noticed before. Angle 1 offers that same mechanism. Angles 2 and 3 don't. The outsider answer is Angle 1, and it's not close.</p>
+  </div>
+</details>
+
+<details>
+  <summary><span class="tag tag-executor">Executor</span> Here's Monday morning's task</summary>
+  <div class="advisor-body">
+    <p>Angle 1 is the only one with a clear Monday morning task. Go to PJM's Markets &amp; Operations portal, pull the FTR auction results (cleared prices, volumes, paths, going back years), and run a simple pivot — which path-pairs have cleared positive FTR prices most consistently over 3–5 years. That identifies the persistent congestion rents in dollar terms. You have your headline figure within a week.</p>
+    <p>Angle 2 has no first step that produces original analysis. SunZia's route and capacity are already documented. Angle 3 is pure regulatory text analysis — a law review article, not a quant Substack post. The legal challenges are active, meaning it dates badly.</p>
+    <p>MISO also publishes FTR auction data. Running the same analysis across both ISOs gives you a second figure and cross-market comparison. The limitation — firm-level ownership is private — is actually a feature, not a bug. Public auctions, private beneficiaries, no disclosure requirement. That <em>is</em> the story.</p>
+    <p>Angle 1 is executable. The others are not, at least not to the analytical standard the prior series set.</p>
+  </div>
+</details>
+
+<h2>Peer Review Highlights</h2>
+
+<details>
+  <summary>Peer review summary (5 reviewers)</summary>
+  <div class="advisor-body">
+    <div class="review-grid">
+      <div class="review-item">
+        <strong>Strongest response (all 5)</strong>
+        The Executor (Response E). Won unanimously for operationalizing the argument: named the data source, described the exact first step, estimated time-to-result, and reframed the data gap as the policy point.
+      </div>
+      <div class="review-item">
+        <strong>Biggest blind spot (all 5)</strong>
+        The Contrarian (Response D). Correctly identified the ownership gap but treated it as fatal, applied a standard the series never set, and offered no constructive path forward.
+      </div>
+      <div class="review-item">
+        <strong>Shared blind spot #1</strong>
+        Pedagogy. No advisor asked whether a policy-literate non-expert can follow FTR mechanics. The reader must understand both the financial instrument and the physical constraint before any quant payoff lands. Heavier lift than prior series.
+      </div>
+      <div class="review-item">
+        <strong>Shared blind spot #2</strong>
+        Post count feasibility. One congestion-rent pivot is one post, not a series. The council never tested whether Angle 1 sustains 6–9 original figures across 2–3 posts.
+      </div>
+      <div class="review-item">
+        <strong>Series fatigue risk</strong>
+        Reviewer 2 flagged: three consecutive "why markets fail" series risks feeling like a grievance loop. The closing arc in Post 3 needs to show what the repair looks like, not just document another failure mode.
+      </div>
+    </div>
+  </div>
+</details>
+
+<footer>
+  Marginal Fuel Council &nbsp;·&nbsp; 2026-05-25 &nbsp;·&nbsp; Question: Series 3 angle selection (transmission) &nbsp;·&nbsp; 5 advisors · 5 peer reviewers · 1 chairman
+</footer>
+
+</body>
+</html>
